@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raidió Fáilte</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <meta name="theme-color" content="#AE3A73">
+</head>
+
+<body>
+
+    <audio id="audio-stream" preload="none">
+        <source src="https://radio.canstream.co.uk:9072/live.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="app-container">
+        <div class="content-area">
+            <div id="contact" class="page">
+                <h1>Déan Teagmháil Linn</h1>
+                <p>
+                    <!-- Contact Form -->
+                <form class="form" id="contactForm">
+                    <label class="contact-text" for="name">Ainm</label>
+                    <input type="text" id="name" class="input" />
+
+                    <label class="contact-text" for="phone">Uimhir ghutháin</label>
+                    <input type="tel" id="phone" class="input" />
+
+                    <label class="contact-text" for="message">Teachtaireacht</label>
+                    <textarea id="message" class="input textarea"></textarea>
+
+                    <button type="submit" class="button">Seol</button>
+                </form>
+                </p>
+                <p class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2311.237839932735!2d-5.942819423523235!3d54.59980258020416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4861085e115ddd55%3A0x27ea762bb5585146!2sRaidi%C3%B3%20F%C3%A1ilte%20107.1fm!5e0!3m2!1sen!2suk!4v1761343254767!5m2!1sen!2suk"
+                        width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </p>
+                <p>
+                    <b>Raidió Fáilte</b><br>
+                    30 Sráid Dhubhaise<br>
+                    Béal Feirste<br>
+                    BT12 4AL
+                </p>
+                <p>
+                    <a href="tel:+442890310013">+44 (0)28 9031 0013</a>
+                </p>
+            </div>
+
+            <div id="home" class="page active">
+                <div class="content-wrapper">
+                    <img src="static/logo.png" class="logo-icon">
+                    <h1>Éist Beo</h1>
+                    <button class="play-pause-button" id="playPauseBtn" aria-label="Play or Pause">
+                        <span class="icon"></span>
+                    </button>
+                    <div class="status-text" id="play-state">
+                        Fáilte
+                    </div>
+                </div>
+            </div>
+
+            <div id="about" class="page">
+                <h1>Eolas</h1>
+                <p>
+                    Aip Raidió Fáilte<br>
+                    <i>©2025. Leagan 1.0</i>
+                </p>
+                <br>
+                <p>
+                    Raidió Fáilte 107.1fm:<br>
+                    <a href="https://www.raidiofailte.com/" target="_blank">Suíomh gréasáin</a>
+                </p>
+                <br>
+                <p>
+                    Aip cruthaithe ag Neil Ó Briain:<br>
+                    <a href="https://www.linktr.ee/neildev" target="_blank">Suíomh gréasáin</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="tab-bar">
+            <button class="tab-button" data-page="contact">
+                <svg class="tab-icon" viewBox="0 0 24 24">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                <span class="tab-label">Teagmháil</span>
+            </button>
+
+            <button class="tab-button active" data-page="home">
+                <svg class="tab-icon" viewBox="0 0 24 24">
+                    <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+                    <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+                    <circle cx="12" cy="12" r="2" />
+                    <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+                    <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
+                </svg>
+                <span class="tab-label">Éist</span>
+            </button>
+
+            <button class="tab-button" data-page="about">
+                <svg class="tab-icon" viewBox="0 0 24 24">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                </svg>
+                <span class="tab-label">Eolas</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
