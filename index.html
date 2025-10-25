@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raidió Fáilte</title>
     <link rel="stylesheet" href="static/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
-    <link rel="manifest" href="static/site.webmanifest">
+    <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#AE3A73">
 </head>
 
@@ -27,13 +24,13 @@
                 <h1>Déan Teagmháil Linn</h1>
                 <p>
                 <form class="form" id="contactForm">
-                    <label class="contact-text" for="name">Ainm</label>
+                    <label class="contact-text" for="name">* Ainm</label>
                     <input type="text" id="name" class="input" />
 
                     <label class="contact-text" for="phone">Uimhir ghutháin</label>
                     <input type="tel" id="phone" class="input" />
 
-                    <label class="contact-text" for="message">Teachtaireacht</label>
+                    <label class="contact-text" for="message">* Teachtaireacht</label>
                     <textarea id="message" class="input textarea"></textarea>
 
                     <button type="submit" class="button">Seol</button>
