@@ -50,16 +50,34 @@
     {
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "icons/maskable-icon.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }    
   ],
-  "start_url": "index.html",
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot_eist.jpg",
+      "sizes": "1080x2340",
+      "type": "image/jpeg",
+      "form_factor": "narrow", 
+      "label": "Éist Beo"
+    },
+    {
+      "src": "/screenshots/screenshot_teagmhail.jpg",
+      "sizes": "1080x2340",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Déan Teagmháil Linn"
+    }
+  ],
+  "id": "/index.html",
+  "start_url": "/index.html",
   "description": "Éist beo le Raidió Fáilte 107.1fm. Cibé áit, cibé uair.",
   "display": "standalone",
   "orientation": "portrait",
