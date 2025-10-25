@@ -62,3 +62,15 @@ tabButtons.forEach(button => {
         document.getElementById(targetPage).classList.add('active');
     });
 });
+
+// Media Session
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: 'Éist Beo',
+    artist: 'Raidió Fáilte',
+    artwork: [{ 
+    src: './icons/icon-512x512.png',
+    sizes: '512x512',
+    type: 'image/png' }]
+  });
+}
