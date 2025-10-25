@@ -65,12 +65,25 @@ tabButtons.forEach(button => {
 
 // Media Session
 if ('mediaSession' in navigator) {
-  navigator.mediaSession.metadata = new MediaMetadata({
-    title: 'Éist Beo',
-    artist: 'Raidió Fáilte',
-    artwork: [{ 
-    src: './icons/icon-512x512.png',
-    sizes: '512x512',
-    type: 'image/png' }]
-  });
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Éist Beo',
+        artist: 'Raidió Fáilte',
+        artwork: [{
+            src: '/icons/icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+        }]
+    });
+}
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/service-worker.js')
+        .then(() => {
+            console.log('Service worker registered');
+        })
+        .catch(err => {
+            console.log('Service worker registration failed: ' + err);
+        });
 }
