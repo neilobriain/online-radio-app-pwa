@@ -34,8 +34,8 @@ body {
 
 /* --- Button Styling --- */
 .play-pause-button {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     border-radius: 50%;
     border: none;
@@ -45,35 +45,26 @@ body {
     background: #e0e5ec;
     box-shadow: 5px 5px 8px #a3b1c6, -5px -5px 8px #ffffff;
     transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+    position: relative;
 }
 
-/* Effect on press */
 .play-pause-button:active {
     transform: scale(0.95);
     box-shadow: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff;
 }
 
-/* --- Icon Styling & Animation --- */
-.icon {
-    box-sizing: border-box;
-    height: 32px;
-    transition: all 0.25s ease-in-out;
-    border-color: transparent transparent transparent #555;
-    border-style: solid;
+.play-pause-icon {
+    width: 48px;
+    height: 48px;
+    stroke: #555;
+    stroke-width: 2;
+    transition: opacity 0.2s;
+    position: absolute;
 }
 
-/* Default state: Play Icon (Triangle) */
-.play-pause-button .icon {
-    width: 0;
-    border-width: 16px 0 16px 28px;
-    margin-left: 8px;
-}
-
-/* Toggled state: Pause Icon (Bars) */
-.play-pause-button.paused .icon {
-    border-style: double;
-    border-width: 0 0 0 28px;
-    margin-left: 0;
+.play-pause-icon.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* CONTACT FORM */

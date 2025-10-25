@@ -2,6 +2,8 @@
 const playPauseButton = document.getElementById('playPauseBtn');
 const audioStream = document.getElementById('audio-stream');
 const playState = document.getElementById('play-state');
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
 
 // Form
 const form = document.getElementById('contactForm');
@@ -12,22 +14,24 @@ const pages = document.querySelectorAll('.page');
 
 // Add an event listener for play button clicks
 playPauseButton.addEventListener('click', () => {
-
-    // Check if the audio is currently paused
     if (audioStream.paused) {
-        // If it's paused, reload the stream to get the latest content
+        // Play the audio
         audioStream.load();
-        // Then, play the audio
         audioStream.play();
         playState.innerText = "á sheinm";
+        
+        // Show pause icon, hide play icon
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
     } else {
-        // If it's playing, pause the audio
+        // Pause the audio
         audioStream.pause();
-        playState.innerText = "múchta"
+        playState.innerText = "múchta";
+        
+        // Show play icon, hide pause icon
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
     }
-
-    // Toggle the 'paused' class on the button
-    playPauseButton.classList.toggle('paused');
 });
 
 // Contact Form

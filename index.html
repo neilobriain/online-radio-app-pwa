@@ -99,7 +99,13 @@
                     <img src="static/logo.png" class="logo-icon" alt="Raidió Fáilte">
                     <h1>Éist Beo</h1>
                     <button class="play-pause-button" id="playPauseBtn" aria-label="Play or Pause">
-                        <span class="icon"></span>
+                        <svg class="play-pause-icon" viewBox="0 0 24 24" id="playIcon">
+                            <polygon points="8,5 19,12 8,19" fill="rgba(174, 58, 115, 0.8)" stroke="none" />
+                        </svg>
+                        <svg class="play-pause-icon hidden" viewBox="0 0 24 24" id="pauseIcon">
+                            <rect x="7" y="5" width="4" height="14" fill="rgba(174, 58, 115, 0.8)" stroke="none" />
+                            <rect x="13" y="5" width="4" height="14" fill="rgba(174, 58, 115, 0.8)" stroke="none" />
+                        </svg>
                     </button>
                     <div class="status-text" id="play-state">
                         Fáilte
