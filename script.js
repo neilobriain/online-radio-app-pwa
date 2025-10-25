@@ -12,6 +12,7 @@ const form = document.getElementById('contactForm');
 const tabButtons = document.querySelectorAll('.tab-button');
 const pages = document.querySelectorAll('.page');
 
+// Audio Player
 // Add an event listener for play button clicks
 playPauseButton.addEventListener('click', () => {
     if (audioStream.paused) {
@@ -32,6 +33,19 @@ playPauseButton.addEventListener('click', () => {
         playIcon.classList.remove('hidden');
         pauseIcon.classList.add('hidden');
     }
+});
+// Sync UI with changes in media controls
+audioStream.addEventListener('play', () => {
+        playState.innerText = "á sheinm";
+        // Show pause icon, hide play icon
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+});
+audioStream.addEventListener('pause', () => {
+        playState.innerText = "múchta";
+        // Show play icon, hide pause icon
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
 });
 
 // Contact Form
