@@ -50,9 +50,14 @@
     {
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    }
+      "purpose": "any maskable"
+    }    
   ],
   "start_url": "index.html",
   "description": "Éist beo le Raidió Fáilte 107.1fm. Cibé áit, cibé uair.",
