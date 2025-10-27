@@ -58,14 +58,14 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    }    
+    }
   ],
   "screenshots": [
     {
       "src": "/screenshots/screenshot_eist.jpg",
       "sizes": "1080x2340",
       "type": "image/jpeg",
-      "form_factor": "narrow", 
+      "form_factor": "narrow",
       "label": "Éist Beo"
     },
     {
@@ -74,6 +74,13 @@
       "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Déan Teagmháil Linn"
+    },
+    {
+      "src": "/screenshots/screenshot_desktop.jpg",
+      "sizes": "1242x767",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Éist ar Ríomhaire"
     }
   ],
   "id": "/index.html",

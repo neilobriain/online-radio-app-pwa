@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.raidiofailte.app",
+        "sha256_cert_fingerprints": ["BD:11:0D:3A:07:92:D5:32:A8:20:DF:AE:DC:C5:EC:22:FB:AB:45:76:BA:F3:CA:7D:9B:91:61:C2:07:2F:4E:62"]
+      }
+    }]
