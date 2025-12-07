@@ -78,7 +78,7 @@
     {
       "src": "/screenshots/screenshot_desktop.jpg",
       "sizes": "1242x767",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Éist ar Ríomhaire"
     }
