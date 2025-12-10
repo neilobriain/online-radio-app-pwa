@@ -171,6 +171,11 @@ body {
     color: #fff;
 }
 
+.page h4 {
+    color: #fff;
+    padding: 10px 0px;
+}
+
 .page p {
     color: #fff;
     line-height: 1.6;

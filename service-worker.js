@@ -5,7 +5,7 @@
  * e.g. Vite or Next.js would hash the files so the name is unique based on content
  * (style-XYZ123.css etc)
  */
-const CACHE_NAME = "rf-cache-v1.0";
+const CACHE_NAME = "rf-cache-v1.0.1";
 const urlsToCache = [
   "/",
   "/static/style.css",
