@@ -12,6 +12,10 @@ const form = document.getElementById('contactForm');
 const tabButtons = document.querySelectorAll('.tab-button');
 const pages = document.querySelectorAll('.page');
 
+// Mini player
+const miniPlayer = document.getElementById('mini-player');
+const miniPauseBtn = document.getElementById('miniPauseBtn');
+
 // Audio Player
 // Add an event listener for play button clicks
 playPauseButton.addEventListener('click', () => {
@@ -40,12 +44,14 @@ audioStream.addEventListener('play', () => {
         // Show pause icon, hide play icon
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
+        updateMiniPlayerVisibility();
 });
 audioStream.addEventListener('pause', () => {
         playState.innerText = "múchta";
         // Show play icon, hide pause icon
         playIcon.classList.remove('hidden');
         pauseIcon.classList.add('hidden');
+        updateMiniPlayerVisibility();
 });
 
 // Contact Form
@@ -78,8 +84,26 @@ tabButtons.forEach(button => {
 
         button.classList.add('active');
         document.getElementById(targetPage).classList.add('active');
+
+        updateMiniPlayerVisibility();
     });
 });
+
+// Mini player
+miniPauseBtn.addEventListener('click', () => {
+    audioStream.pause();
+});
+function updateMiniPlayerVisibility() {
+    const activeTab = document.querySelector('.tab-button.active').getAttribute('data-page');
+    const isPlaying = !audioStream.paused;
+
+    // Show only if playing and not on the home page
+    if (isPlaying && activeTab !== 'home') {
+        miniPlayer.classList.remove('hidden');
+    } else {
+        miniPlayer.classList.add('hidden');
+    }
+}
 
 // Media Session
 if ('mediaSession' in navigator) {

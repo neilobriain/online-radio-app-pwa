@@ -16,11 +16,6 @@ installButton.addEventListener("click", async () => {
   disableInAppInstallPrompt();
 });
 
-function disableInAppInstallPrompt() {
-  installPrompt = null;
-  installButton.setAttribute("hidden", "");
-}
-
 window.addEventListener("appinstalled", () => {
   disableInAppInstallPrompt();
 });
