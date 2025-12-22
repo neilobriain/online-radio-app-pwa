@@ -5,9 +5,8 @@
  * e.g. Vite or Next.js would hash the files so the name is unique based on content
  * (style-XYZ123.css etc)
  */
-const CACHE_NAME = "rf-cache-v1.0.1";
+const CACHE_NAME = "rf-cache-v1.0.2";
 const urlsToCache = [
-  "/",
   "/static/style.css",
   "/static/station.jpg",
   "/static/logo.png",
@@ -55,7 +54,11 @@ async function delete_old_caches() {
  * This isn't just fetch() calls; clicking a <a href> triggers it too.
  */
 self.addEventListener("fetch", (event) => {
-  console.log("fetching!");
+  if (event.request.mode === "navigate") {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+
   event.respondWith(get_response(event.request));
 });
 
