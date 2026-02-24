@@ -1,11 +1,12 @@
 /**
  * The cache name should change every time you want to "cache bust"
- * i.e. if you want to change these files
- * in a real-world app this would be handled by your build system
- * e.g. Vite or Next.js would hash the files so the name is unique based on content
- * (style-XYZ123.css etc)
+ * Bump this when static assets change.
  */
-const CACHE_NAME = "rf-cache-v1.0.2";
+const CACHE_NAME = "rf-cache-v1.0.4";
+
+/**
+ * ONLY these files will ever be cached.
+ */
 const urlsToCache = [
   "/static/style.css",
   "/static/station.jpg",
@@ -13,69 +14,67 @@ const urlsToCache = [
 ];
 
 /**
- * Listen for the install event, which fires when the service worker is installing.
- * We use event.waitUntil() to ensure the install doesn't finished until our promise resolves
- * so we don't do anything else until the initial caching is done.
+ * Install: cache static assets
  */
-self.addEventListener("install", async (event) => {
-  console.log("installing!");
+self.addEventListener("install", (event) => {
+  console.log("Service Worker installing");
   self.skipWaiting();
-  event.waitUntil(cache_assets());
+
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
+  );
 });
 
-async function cache_assets() {
-  const cache = await self.caches.open(CACHE_NAME);
-  return cache.addAll(urlsToCache);
-}
-
 /**
- * Listen for the activate event, which is fired after installation
- * Activate is when the service worker actually takes over from the previous
- * version, which is a good time to clean up old caches.
- * Again we use waitUntil() to ensure we don't move on until the old caches are deleted.
+ * Activate: remove old caches
  */
-self.addEventListener("activate", async (event) => {
-  console.log("activating!");
-  event.waitUntil(delete_old_caches());
+self.addEventListener("activate", (event) => {
+  console.log("Service Worker activating");
+
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
+      )
+    )
+  );
 });
 
-async function delete_old_caches() {
-  // Get the keys of all the old caches
-  const keys = await caches.keys();
-  const deletePromises = keys
-    .filter((key) => key !== CACHE_NAME)
-    .map((key) => self.caches.delete(key));
-  return Promise.all(deletePromises);
-}
-
 /**
- * Listen for browser fetch events.
- * These fire any time the browser tries to load anything.
- * This isn't just fetch() calls; clicking a <a href> triggers it too.
+ * Fetch:
+ * - Pages (navigation): always network
+ * - Explicit static assets: cache-first
+ * - Everything else (API, media, streams): network only
  */
 self.addEventListener("fetch", (event) => {
-  if (event.request.mode === "navigate") {
-    event.respondWith(fetch(event.request));
+  const request = event.request;
+  const url = new URL(request.url);
+
+  // Always fetch pages from network
+  if (request.mode === "navigate") {
+    event.respondWith(fetch(request));
     return;
   }
 
-  event.respondWith(get_response(event.request));
-});
+  // Only cache explicitly listed static assets
+  if (urlsToCache.includes(url.pathname)) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.match(request).then((cached) => {
+          if (cached) return cached;
 
-/**
- * We follow the "stale-while-revalidate" pattern:
- * respond with the cached response immediately (if we have one)
- * even though this might be "stale" (not the most recent version).
- * In the background fetch the latest version and put that into cache
- * on next request the user will get the latest version
- */
-async function get_response(request) {
-  const cache = await self.caches.open(CACHE_NAME);
-  const cached_response = await cache.match(request);
-  // Important: we do not await here, since that would defeat the point of using the cache
-  const pending_response = fetch(request).then((response) => {
-    cache.put(request, response.clone());
-    return response;
-  });
-  return cached_response || pending_response;
-}
+          return fetch(request).then((response) => {
+            cache.put(request, response.clone());
+            return response;
+          });
+        })
+      )
+    );
+    return;
+  }
+
+  // Everything else: network only, never cached
+  event.respondWith(fetch(request));
+});
