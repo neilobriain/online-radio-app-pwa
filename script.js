@@ -16,6 +16,14 @@ const pages = document.querySelectorAll('.page');
 const miniPlayer = document.getElementById('mini-player');
 const miniPauseBtn = document.getElementById('miniPauseBtn');
 
+// Snackbar
+function toast(msg) {
+    const el = document.getElementById('snackbar');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2500);
+}
+
 // Audio Player
 // Add an event listener for play button clicks
 playPauseButton.addEventListener('click', () => {
@@ -24,7 +32,7 @@ playPauseButton.addEventListener('click', () => {
         audioStream.load();
         audioStream.play();
         playState.innerText = "á sheinm";
-        
+
         // Show pause icon, hide play icon
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
@@ -32,7 +40,7 @@ playPauseButton.addEventListener('click', () => {
         // Pause the audio
         audioStream.pause();
         playState.innerText = "múchta";
-        
+
         // Show play icon, hide pause icon
         playIcon.classList.remove('hidden');
         pauseIcon.classList.add('hidden');
@@ -40,18 +48,18 @@ playPauseButton.addEventListener('click', () => {
 });
 // Sync UI with changes in media controls
 audioStream.addEventListener('play', () => {
-        playState.innerText = "á sheinm";
-        // Show pause icon, hide play icon
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
-        updateMiniPlayerVisibility();
+    playState.innerText = "á sheinm";
+    // Show pause icon, hide play icon
+    playIcon.classList.add('hidden');
+    pauseIcon.classList.remove('hidden');
+    updateMiniPlayerVisibility();
 });
 audioStream.addEventListener('pause', () => {
-        playState.innerText = "múchta";
-        // Show play icon, hide pause icon
-        playIcon.classList.remove('hidden');
-        pauseIcon.classList.add('hidden');
-        updateMiniPlayerVisibility();
+    playState.innerText = "múchta";
+    // Show play icon, hide pause icon
+    playIcon.classList.remove('hidden');
+    pauseIcon.classList.add('hidden');
+    updateMiniPlayerVisibility();
 });
 
 // Contact Form
@@ -62,8 +70,14 @@ form.addEventListener('submit', function (e) {
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    if (!name || !message) {
-        alert('Ní mór ainm agus teachtaireacht a líonadh.');
+    if (!name && !message) {
+        toast('Ní mór ainm agus teachtaireacht a líonadh.');
+        return;
+    } else if (!name) {
+        toast('Ní mór ainm a líonadh.');
+        return;
+    } else if (!message) {
+        toast('Ní mór teachtaireacht a líonadh.');
         return;
     }
 
