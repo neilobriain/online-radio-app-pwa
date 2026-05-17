@@ -28,14 +28,9 @@ body {
 }
 
 .now-playing-text {
-    display: block;
     color: #fff;
     font-size: 20px;
     text-align: center;
-}
-
-.now-playing-text.hidden {
-    display: none;
 }
 
 .programme-name {

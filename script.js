@@ -11,6 +11,7 @@ const form = document.getElementById('contactForm');
 // Tabs
 const tabButtons = document.querySelectorAll('.tab-button');
 const pages = document.querySelectorAll('.page');
+const contentArea = document.querySelector('.content-area');
 
 // Mini player
 const miniPlayer = document.getElementById('mini-player');
@@ -99,6 +100,7 @@ tabButtons.forEach(button => {
         button.classList.add('active');
         document.getElementById(targetPage).classList.add('active');
 
+        contentArea.scrollTop = 0;
         updateMiniPlayerVisibility();
     });
 });

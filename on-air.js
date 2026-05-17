@@ -7,24 +7,26 @@ async function loadNowPlaying() {
         const res = await fetch("/.netlify/functions/now-playing");
 
         if (!res.ok) {
-            nowPlayingContainer.classList.add("hidden");
+            programmeNameText.textContent = "";
+            nowPlayingContainer.hidden = true;
             miniPlayerText.textContent = "Ag éisteacht beo";
-            return;
         }
-        
+
         const data = await res.json();
 
         if (data.programmeName) {
             programmeNameText.textContent = data.programmeName;
             miniPlayerText.textContent = "Beo: " + data.programmeName;
-            nowPlayingContainer.classList.remove("hidden");
+            nowPlayingContainer.hidden = false;
         } else {
-            nowPlayingContainer.classList.add("hidden");
+            programmeNameText.textContent = "";
+            nowPlayingContainer.hidden = true;
             miniPlayerText.textContent = "Ag éisteacht beo";
         }
 
     } catch (err) {
-        nowPlayingContainer.classList.add("hidden");
+        programmeNameText.textContent = "";
+        nowPlayingContainer.hidden = true;
         miniPlayerText.textContent = "Ag éisteacht beo";
     }
 }
