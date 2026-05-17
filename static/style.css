@@ -27,6 +27,22 @@ body {
     padding: 20px;
 }
 
+.now-playing-text {
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.now-playing-text.hidden {
+    display: none;
+}
+
+.programme-name {
+    font-weight: bold;
+    text-shadow:1px 1px 10px #ccc;
+}
+
 .status-text {
     color: #fff;
     font-size: 20px;

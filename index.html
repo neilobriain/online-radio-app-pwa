@@ -109,6 +109,10 @@
                     <div class="status-text" id="play-state">
                         Fáilte
                     </div>
+                    <div class="now-playing-text hidden">
+                            Ar an aer:<br>
+                            <span class="programme-name" id="programmeName"></span>
+                    </div>
                 </div>
             </div>
 
@@ -162,7 +166,7 @@
 
         <!-- Mini Player -->
         <div id="mini-player" class="mini-player hidden">
-            <span class="mini-player-text">Ag éisteacht beo</span>
+            <span class="mini-player-text" id="miniPlayerText">Ag éisteacht beo</span>
             <button id="miniPauseBtn" class="mini-pause-button" aria-label="Stop">
                 <svg viewBox="0 0 24 24" width="24" height="24">
                     <rect x="6" y="6" width="12" height="12" fill="white" />
@@ -212,6 +216,7 @@
 
     <script src="script.js"></script>
     <script src="install-button.js"></script>
+    <script src="on-air.js"></script>
 
     <!-- Service worker registration script -->
     <script>
