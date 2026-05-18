@@ -29,6 +29,8 @@ export default async function handler() {
             .replace(/&nbsp;/g, " ")
             .replace(/&#8217;/g, "'")
             .replace(/&#038;/g, "&")
+            .replace(/&#8211;/g, "-")
+            .replace(/&#8212;/g, "-")
             .replace(/\s+/g, " ")
             .trim();
 
