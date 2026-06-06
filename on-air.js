@@ -7,9 +7,8 @@ async function loadNowPlaying() {
         const res = await fetch("/.netlify/functions/now-playing");
 
         if (!res.ok) {
-            programmeNameText.textContent = "";
-            nowPlayingContainer.hidden = true;
-            miniPlayerText.textContent = "Ag éisteacht beo";
+            hideOnAirInfo();
+            return;
         }
 
         const data = await res.json();
@@ -19,16 +18,18 @@ async function loadNowPlaying() {
             miniPlayerText.textContent = "Beo: " + data.programmeName;
             nowPlayingContainer.hidden = false;
         } else {
-            programmeNameText.textContent = "";
-            nowPlayingContainer.hidden = true;
-            miniPlayerText.textContent = "Ag éisteacht beo";
+            hideOnAirInfo();
         }
 
     } catch (err) {
-        programmeNameText.textContent = "";
-        nowPlayingContainer.hidden = true;
-        miniPlayerText.textContent = "Ag éisteacht beo";
+        hideOnAirInfo();
     }
+}
+
+function hideOnAirInfo() {
+    programmeNameText.textContent = "";
+    nowPlayingContainer.hidden = true;
+    miniPlayerText.textContent = "Ag éisteacht beo";
 }
 
 loadNowPlaying();
