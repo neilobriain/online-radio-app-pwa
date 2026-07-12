@@ -2,7 +2,7 @@
  * The cache name should change every time you want to "cache bust"
  * Bump this when static assets change.
  */
-const CACHE_NAME = "rf-cache-v1.0.7";
+const CACHE_NAME = "rf-cache-v1.0.8";
 
 /**
  * ONLY these files will ever be cached.
